@@ -1,18 +1,7 @@
-#include <stddef.h>
-typedef struct
-{
-    float side_1;
-    float side_2;
-    float side_3;
-} Triangle;
-
-typedef struct 
-{
-    Triangle* triangles;
-    size_t size;
-    size_t capacity;
-} TriangleDatabase;
-
+#include <stdio.h> 
+#include <stdlib.h> 
+typedef struct Triangle Triangle;
+typedef struct TriangleDatabase TriangleDatabase;
 /**
  * @brief Создание треугольника с заданными сторонами
  * @param side_1 Длина первой стороны треугольника
@@ -20,7 +9,7 @@ typedef struct
  * @param side_3 Длина третьей стороны треугольника
  * @return Указатель на созданный треугольник, или NULL, если треугольник невозможно создать
  */
-Triangle* CreateTriangle(float side_1, float side_2, float side_3);
+Triangle* CreateTriangle(double side_1, double side_2, double side_3);
 
 /**
  * @brief Вывод информации о треугольнике
@@ -33,14 +22,15 @@ void PrintTriangle(const Triangle* triangle);
  * @param triangle Указатель на треугольник
  * @return Значение периметра треугольника
  */
-float Perimeter(const Triangle* triangle);
+double Perimeter(const Triangle* triangle);
 
 /**
  * @brief Вычисление площади треугольника по формуле Герона
  * @param triangle Указатель на треугольник
  * @return Значение площади треугольника
  */
-float Area(const Triangle* triangle);
+
+double Area(const Triangle* triangle);
 
 /**
  * @brief Нахождение углов треугольника в градусах
@@ -49,7 +39,7 @@ float Area(const Triangle* triangle);
  * @param beta Указатель на переменную, в которую будет записан угол бетта
  * @param gamma Указатель на переменную, в которую будет записан угол гамма
  */
-void FindAngles(const Triangle* triangle, float* alpha, float* beta, float* gamma);
+void FindAngles(const Triangle* triangle, double* alpha, double* beta, double* gamma);
 
 /**
  * @brief Вывод углов треугольника в градусах
@@ -57,7 +47,7 @@ void FindAngles(const Triangle* triangle, float* alpha, float* beta, float* gamm
  * @param beta Угол бетта
  * @param gamma Угол гамма
  */
-void PrintTriangleAngles(float alpha, float beta, float gamma);
+void PrintTriangleAngles(double alpha, double beta, double gamma);
 
 /**
  * @brief Поиск треугольников по длине стороны в базе данных и вывод информации о них
@@ -65,7 +55,7 @@ void PrintTriangleAngles(float alpha, float beta, float gamma);
  * @param side_choice Выбор стороны треугольника для поиска (1 - сторона 1, 2 - сторона 2, 3 - сторона 3)
  * @param side_value Значение длины стороны для поиска
  */
-void FindTrianglesBySide(const TriangleDatabase* db, int side_choice, float side_value);
+void FindTrianglesBySide(const TriangleDatabase* db, int side_choice, double side_value);
 
 /**
  * @brief Удаление треугольников из базы данных по заданной длине стороны
@@ -73,7 +63,7 @@ void FindTrianglesBySide(const TriangleDatabase* db, int side_choice, float side
  * @param side_choice Выбор стороны треугольника для удаления (1 - сторона 1, 2 - сторона 2, 3 - сторона 3)
  * @param side_value Значение длины стороны для удаления
  */
-void DeleteTrianglesBySide(TriangleDatabase* db, int side_choice, float side_value);
+void DeleteTrianglesBySide(TriangleDatabase* db, int side_choice, double side_value);
 
 /**
  * @brief Сортировка базы данных треугольников по длине заданной стороны
@@ -125,3 +115,5 @@ void FindTriangleFromConsole(const TriangleDatabase* db);
  * @param db Указатель на базу данных треугольников
  */
 void SortDatabaseFromConsole(TriangleDatabase* db);
+
+void DeleteDatabase(struct TriangleDatabase* db);

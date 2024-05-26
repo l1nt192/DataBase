@@ -20,11 +20,13 @@ int main()
 {
     setlocale(LC_ALL, "rus");
     TriangleDatabase* db = CreateDatabase(10);
-    if (!db) {
+    if (!db)
+    {
         printf("Не удалось создать базу данных\n");
         return 1;
     }
-    while (1) {
+    while (1)
+    {
         int choice;
         printf("\nМеню:\n");
         printf("1. Добавить треугольник\n");
@@ -36,7 +38,8 @@ int main()
         printf("Введите номер команды: ");
         scanf_s("%d", &choice);
 
-        switch (choice) {
+        switch (choice)
+        {
         case 1:
             AddTriangleFromConsole(db);
             break;
@@ -53,8 +56,7 @@ int main()
             PrintDatabase(db);
             break;
         case 6:
-            free(db->triangles);
-            free(db);
+            DeleteDatabase(db);
             return 0;
         default:
             printf("Неверная команда. Пожалуйста, попробуйте снова.\n");
